@@ -1,0 +1,6 @@
+.env
+.rsync_exclude
+.venv
+.vscode
+Pipfile.lock
+__pycache__/
