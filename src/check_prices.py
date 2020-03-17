@@ -23,7 +23,7 @@ def get_prices(url: str, assets: dict, currency: str) -> dict:
         prices = req.json()
     except requests.exceptions.RequestException as e:
         print(f"ERR: {e}")
-        sleep(60)
+        prices = False
 
     return prices
 
@@ -46,10 +46,13 @@ if __name__ == "__main__":
         prices = get_prices(cfg.PRICE_API_URL, cfg.ASSETS, cfg.CURRENCY)
 
         # Publish price metrics
-        for price in prices.items():
-            asset_price_gauge.labels(
-                cfg.ASSETS[price[0]]["symbol"], cfg.PRICE_SOURCE
-            ).set(price[1][cfg.CURRENCY])
+        if prices:
+            for price in prices.items():
+                asset_price_gauge.labels(
+                    cfg.ASSETS[price[0]]["symbol"], cfg.PRICE_SOURCE
+                ).set(price[1][cfg.CURRENCY])
+        else:
+            print("ERR: Failed to get prices. Retrying in {cfg.DEFAULT_SLEEP} seconds.")
 
         # Pause before next scrape
-        sleep(60)
+        sleep(cfg.DEFAULT_SLEEP)
