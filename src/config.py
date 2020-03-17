@@ -19,6 +19,9 @@ ASSETS = {
     "litecoin": {"symbol": "ltc", "name": "Litecoin"},
 }
 
+# Other
+DEFAULT_SLEEP = 60
+
 # Test data
 TEST_SAMPLE_ARTICLES = [
     {
