@@ -27,28 +27,29 @@ Clone this repository and switch to the resulting directory.
 
 **Note:** The rest of the shell commands on this page assume the cloned `asset_trends` is your _working directory_.
 
-Ensure the `grafana.db` file is writeable:
-
-```bash
-$ chmod 666 conf/grafana.db
-```
-
 
 ### Build and Run
 
-1. Put your CryptoPanic API token in a `Docker Compose` environment file (`.env`)
+1. Create the Data volumes
+
+   ```bash
+   $ ./create_docker_volumes.sh
+   prometheus_data
+   grafana_data
+   ```
+
+2. Put your CryptoPanic API token in a `Docker Compose` environment file (`.env`)
 
     ```bash
     # CryptoPanic API endpoint and authentication token
     NEWS_API_TOKEN=<< YOUR_API_TOKEN >>
     ```
 
-2. Run docker-compose which will build the docker image and start the necessary containers
+3. Run docker-compose which will build the docker image and start the necessary containers
 
     ```bash
     $ docker-compose up -d
     Creating network "asset_trends_default" with the default driver
-    Creating volume "asset_trends_prometheus_data" with default driver
     ...
     << OMITTED FOR BREVITY >>
     ...
@@ -61,7 +62,7 @@ $ chmod 666 conf/grafana.db
     **Note:** Enable `privileged` mode for the `prometheus` container if it fails to start,  
     logging a `panic: syscall.Getrlimit failed: operation not permitted` error.
 
-3. Verify the service endpoints
+4. Verify the service endpoints
 
     ```bash
     % docker-compose ps
