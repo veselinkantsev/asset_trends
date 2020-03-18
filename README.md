@@ -1,4 +1,4 @@
-![build](https://github.com/veselinkantsev/asset_trends.tmp/workflows/build/badge.svg)
+![build](https://github.com/veselinkantsev/asset_trends/workflows/build/badge.svg)
 
 # Crypto Asset's Publicity and Price Trend Visualisation
 

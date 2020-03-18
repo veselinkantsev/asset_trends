@@ -5,8 +5,6 @@ RUN adduser -u 1000 -D container &&\
 
 USER container
 
-WORKDIR /srv
-
 # Set Pipenv bin path
 ENV PATH="$PATH:/home/container/.local/bin"
 
@@ -18,9 +16,14 @@ RUN pip install --user pipenv
 
 # Setup Pipenv venv
 ADD Pipfile /srv/
+WORKDIR /srv
 RUN pipenv install --skip-lock
 
+# Set Python path for imports
+ENV PYTHONPATH="/srv"
+
 # Add code last to reduce cache bust
-ADD src/ /srv/
+ADD src/ /srv/src/
+WORKDIR /srv/src
 
 ENTRYPOINT ["pipenv"]
