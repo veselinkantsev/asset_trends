@@ -4,7 +4,7 @@
 from src.check_prices import get_prices
 import requests
 
-from src import config as cfg
+from src import constants as cfg
 
 
 class MockResponse:

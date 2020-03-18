@@ -4,7 +4,7 @@
 from src.count_articles import get_articles, inspect_articles
 import requests
 
-from src import config as cfg
+from src import constants as cfg
 
 
 class MockResponse:
