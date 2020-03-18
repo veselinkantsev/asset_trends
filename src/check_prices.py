@@ -6,7 +6,7 @@ from time import sleep
 import prometheus_client as prom
 import requests
 
-from src import config as cfg
+from src import constants as cfg
 
 
 def get_prices(url: str, assets: dict, currency: str) -> dict:

@@ -106,7 +106,7 @@ The _Overview_ panel incorporates all available assets (more details below).
 
 ## In Detail
 
-Config variables are set in `src/config.py` with the exception of `NEWS_API_TOKEN` which is sourced from a private `.env` file.
+Config variables are set in `src/constants.py` with the exception of `NEWS_API_TOKEN` which is sourced from a private `.env` file.
 
 The workflow begins with `src/count_articles.py` which:
 
