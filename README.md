@@ -21,16 +21,12 @@ The collected data is exported as [Prometheus](https://prometheus.io) time serie
 
 ## Setup
 
-### Clone the repo
 
-Clone this repository and switch to the resulting directory.
+1. Clone this repository and switch to the resulting directory
 
 **Note:** The rest of the shell commands on this page assume the cloned `asset_trends` is your _working directory_.
 
-
-### Build and Run
-
-1. Create the Data volumes
+2. Create the Data volumes
 
    ```bash
    $ ./create_docker_volumes.sh
@@ -38,14 +34,14 @@ Clone this repository and switch to the resulting directory.
    grafana_data
    ```
 
-2. Put your CryptoPanic API token in a `Docker Compose` environment file (`.env`)
+3. Put your CryptoPanic API token in a `Docker Compose` environment file (`.env`)
 
     ```bash
     # CryptoPanic API endpoint and authentication token
     NEWS_API_TOKEN=<< YOUR_API_TOKEN >>
     ```
 
-3. Run docker-compose which will build the docker image and start the necessary containers
+4. Run docker-compose which will build the docker image and start the necessary containers
 
     ```bash
     $ docker-compose up -d
@@ -62,7 +58,7 @@ Clone this repository and switch to the resulting directory.
     **Note:** Enable `privileged` mode for the `prometheus` container if it fails to start,  
     logging a `panic: syscall.Getrlimit failed: operation not permitted` error.
 
-4. Verify the service endpoints
+5. Verify the service endpoints
 
     ```bash
     % docker-compose ps
