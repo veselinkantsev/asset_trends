@@ -2,16 +2,16 @@
 
 for II in prometheus grafana;do
 
-  # Create volumes
+  # Create volume
   docker volume create ${II}_data
 
-  # Put config/data files in place
+  # Copy files to volume
   docker run \
     --rm \
-    -v $PWD/conf:/conf:ro \
-    -v ${II}_data:/data \
+    -v $PWD/conf:/_bind_mount:ro \
+    -v ${II}_data:/_volume \
     --entrypoint=/bin/sh \
     alpine \
-    -c "mkdir /data/${II} && cp /conf/${II}.* /data/${II}/ && chmod 777 /data/${II} && chmod 666 /data/${II}/*"
+    -c "mkdir /_volume/${II} && cp /_bind_mount/${II}.* /_volume/${II}/ && chmod 777 /_volume/${II} && chmod 666 /_volume/${II}/*"
 
 done
