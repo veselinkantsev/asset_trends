@@ -15,15 +15,15 @@ ENV PIPENV_VENV_IN_PROJECT=true
 RUN pip install --user pipenv
 
 # Setup Pipenv venv
-ADD Pipfile /srv/
+COPY Pipfile Pipfile.lock /srv/
 WORKDIR /srv
-RUN pipenv install --skip-lock
+RUN pipenv install --ignore-pipfile
 
 # Set Python path for imports
 ENV PYTHONPATH="/srv"
 
 # Add code last to reduce cache bust
-ADD src/ /srv/src/
+COPY src/ /srv/src/
 WORKDIR /srv/src
 
 ENTRYPOINT ["pipenv"]

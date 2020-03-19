@@ -24,7 +24,7 @@ The collected data is exported as [Prometheus](https://prometheus.io) time serie
 
 1. Clone this repository and switch to the resulting directory
 
-**Note:** The rest of the shell commands on this page assume the cloned `asset_trends` is your _working directory_.
+   **NOTE:** The rest of the shell commands on this page assume the cloned `asset_trends` is your _working directory_.
 
 2. Create the Data volumes
 
@@ -55,7 +55,7 @@ The collected data is exported as [Prometheus](https://prometheus.io) time serie
     Creating asset_trends_price_checker_1   ... done
     ```
 
-    **Note:** Enable `privileged` mode for the `prometheus` container if it fails to start,  
+    **NOTE:** Enable `privileged` mode for the `prometheus` container if it fails to start,  
     logging a `panic: syscall.Getrlimit failed: operation not permitted` error.
 
 5. Verify the service endpoints
