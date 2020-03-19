@@ -23,12 +23,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install pipenv
+        pipenv install --dev --ignore-pipfile
     - name: Lint with Black
       run: |
-        pip install black
-        black .
+        pipenv run black .
     - name: Test with pytest
       run: |
-        pip install pytest
-        pytest .
+        pipenv run pytest .
