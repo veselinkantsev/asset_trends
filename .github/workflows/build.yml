@@ -30,4 +30,5 @@ jobs:
         pipenv run black .
     - name: Test with pytest
       run: |
+        export PYTHONPATH=$PWD
         pipenv run pytest .
