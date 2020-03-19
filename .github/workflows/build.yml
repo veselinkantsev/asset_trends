@@ -27,9 +27,7 @@ jobs:
         pipenv install --dev --ignore-pipfile
     - name: Lint with Black
       run: |
-        pipenv shell
-        black .
+        pipenv run black .
     - name: Test with pytest
       run: |
-        pipenv shell
-        pytest .
+        pipenv run pytest .
