@@ -17,7 +17,3 @@ python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
-
-[scripts]
-count_articles = "python -u count_articles.py"
-check_prices = "python -u check_prices.py"

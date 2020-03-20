@@ -3,13 +3,13 @@ services:
     article_counter:
         build: .
         image: asset_trends
-        command: run count_articles
+        command: src/count_articles.py
         environment:
             - NEWS_API_TOKEN
 
     price_checker:
         image: asset_trends
-        command: run check_prices
+        command: src/check_prices.py
 
     prometheus:
         image: prom/prometheus
